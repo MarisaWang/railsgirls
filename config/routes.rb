@@ -1,4 +1,6 @@
 Realsgirls::Application.routes.draw do
+  resources :comments
+
   resources :ideas
   root to: redirect('/ideas')
   get "pages/info"
