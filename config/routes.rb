@@ -1,5 +1,7 @@
 Realsgirls::Application.routes.draw do
   resources :ideas
+  root to: redirect('/ideas')
+  get "pages/info"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
