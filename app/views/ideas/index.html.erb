@@ -1,5 +1,24 @@
 <h1>Listing ideas</h1>
 
+<ul class="media-list">
+  <% @ideas.each do |idea| %>
+    <li class="media">
+      <%= link_to(image_tag(idea.picture_url, width: 100), idea, class: 'pull-left') %>
+      <div class="media-body">
+        <h4 class="media-heading"><%= idea.name %></h4>
+        <p><%= idea.description %></p>
+        <p>
+          <%= link_to('Show', idea) unless idea.picture.present? %>
+          <%= link_to 'Edit', edit_idea_path(idea) %>
+          <%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </tr>
+        </p>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+
 <table>
   <thead>
     <tr>
@@ -17,8 +36,8 @@
       <tr>
         <td><%= idea.name %></td>
         <td><%= idea.description %></td>
-        <td><%= idea.picture %></td>
-        <td><%= link_to 'Show', idea %></td>
+        <td><%= link_to(image_tag(idea.picture_url, width: 600), idea) if idea.picture.present? %></td>
+        <td><%= link_to('Show', idea) unless idea.picture.present? %></td>
         <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
         <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
